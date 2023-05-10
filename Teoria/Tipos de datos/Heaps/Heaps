@@ -1,0 +1,36 @@
+--
+-- Heaps comunes
+--
+-- Arboles que permiten acceso eficiente al minimo elemento
+
+-- Invariantes:
+-- Todo nodo es menor a todos los valores de sus hijos 
+-- Por lo anterior, el minimo siempre estará en la raiz
+
+-- Operaciones tipicas:
+-- insert :: Ord a => a -> Heap a -> Heap a
+-- findMin :: Ord a => Heap a -> a
+-- deleteMin :: Ord a => Heap a -> Heap a
+
+
+
+--
+-- Leftist Heaps
+--
+
+--                       1
+--           7                       3
+--   10              9
+--               12      11
+-- Heaps con una invariante mas:
+-- º El rango de cualquier hijo izquierdo es mayor o igual que el de su hermano de la derecha.
+-- Para explicar esto:
+-- Rango es la longitud de la espina derecha de cada nodo.
+-- La espina derecha es la ruta más corta a una hoja. 
+-- Como consecuencia los elementos de la espina derecha están ordenados
+--
+-- Tiene todas las operaciones de Heaps y una adicional: 
+-- merge :: Ord a ⇒ Heap a → Heap a → Heap a (la union entre dos heaps)
+
+type Rank = Int
+data Heap a = E | N Rank a (Heap a) (Heap a)
