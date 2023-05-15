@@ -30,8 +30,8 @@ ror (x:xs) n = ror (xs ++ [x]) (n-1)
 
 --g)
 upto n m
-| n <= m = [n] ++ (upto (n+1) m)
-| otherwise = []
+        | n <= m = [n] ++ (upto (n+1) m)
+        | otherwise = []
 
 --h) xd
 

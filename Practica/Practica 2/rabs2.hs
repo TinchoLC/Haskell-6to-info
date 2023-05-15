@@ -21,8 +21,8 @@ moverIzq(xs, 0) = (xs, 0)
 moverIzq(xs, n) = (xs, n-1)
 
 moverDer :: Linea -> Linea
-moverDer(xs,n) | n < length xs = (xs,n+1)
-| otherwise = (xs,n)
+moverDer(xs,n)  | n < length xs = (xs,n+1)
+                | otherwise = (xs,n)
 
 moverIni :: Linea -> Linea
 moverIni(xs,n) = (xs,0)
