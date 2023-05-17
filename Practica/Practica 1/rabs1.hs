@@ -5,14 +5,29 @@ borrarUltimo [] = []
 borrarUltimo [x] = []
 borrarUltimo (x:xs) = (x:borrarUltimo xs)
 
---b) xd
+--b) 
+
+potaxio = [('a',5),('b',5),('c',5),('a',8),('a',12),('c',353),('c',33)] 
+
+primigenia :: Ord x => (x,y) -> [(x,[y])] -> [(x,[y])]
+primigenia (a,b) [] = [(a,[b])]
+primigenia (a,b) ( (q,bs):xd )  | a == q = (q,bs++[b]):xd
+                                | otherwise = (q,bs):(primigenia (a,b) xd)
+
+collectx :: Ord a => [(a,b)] -> [(a,[b])]
+collectx [] = []
+collectx ((x,y):xys) = primigenia (x,y) (collectx xys)
 
 --c)
 --serie que se comporta de la siguiente manera: serie [1, 2, 3] = [[ ], [1], [1, 2], [1, 2, 3]] Dar su tipo m´as general.
 
+serieaux xs = [[]] ++ xs
+
 series :: [a] -> [[a]]
 series [] = []
-series lista = series (borrarUltimo lista) ++ [lista] -- esta no anda bien
+series lista = series (borrarUltimo lista) ++ [lista]
+
+serie xs = serieaux (series xs)
 
 --d)
 paresIguales a b c d = if a==b then (c==d) else if a==c then (b==d) else if a==d then (b==c) else False
