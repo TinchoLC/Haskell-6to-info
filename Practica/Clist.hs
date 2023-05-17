@@ -1,0 +1,1 @@
+data Clist a = EmptyCL | CUnit a | Consnoc a (Clist a) a
