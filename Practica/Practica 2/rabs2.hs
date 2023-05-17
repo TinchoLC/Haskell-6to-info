@@ -42,3 +42,37 @@ borrar (xs,n) = (bor n xs, n-1)
 bor :: Int -> [Char] -> [Char]
 bor 1 (x:xs) = xs
 bor n (x:xs) = x:(bor (n-1) xs)
+
+--8)
+data BST a = E | N (BST a) a (BST a) deriving Show
+
+data Color = R | B deriving Show 
+data RBT a = Eb | Nb Color (RBT a) a (RBT a) deriving Show
+
+fromOrdList :: [x] -> BST x
+fromOrdList [] = E
+fromOrdList xs = 
+    let     n = length xs
+            m = div n 2
+            x = xs!!m 
+            ls = take m xs
+            rs = drop (m+1) xs
+            (t1,t2) = (fromOrdList ls, fromOrdList rs)
+            in (N t1 x t2)
+
+-- para hacer esto con RBT tengo que aplicar el logaritmo entero / pares tienen raiz roja (que luego se pinta) / impares raiz negra
+-- recordar se puede tener 2 negros seguidos pero no dos rojos seguidos 
+
+{-fromOrdList2 :: [x] -> RBT x
+fromOrdList2 [] = Eb
+fromOrdList2 xs ==  let     n = length xs
+            m = div n 2
+            x = xs!!m 
+            ls = take m xs
+            rs = drop (m+1) xs
+            (t1,t2) = (fromOrdList ls, fromOrdList rs)
+            in (N t1 x t2)-} 
+
+
+
+
