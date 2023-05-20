@@ -12,3 +12,8 @@ isEmptyCL _ = False
 
 isCUnit (CUnit _) = True
 isCUnit _ = False
+
+--b)
+reverseCL EmptyCL = EmptyCL
+reverseCL (CUnit x) = CUnit x
+reverseCL (Consnoc x xs y) = Consnoc y (reverseCL xs) x
