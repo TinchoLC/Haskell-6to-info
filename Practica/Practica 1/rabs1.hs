@@ -96,6 +96,10 @@ euler n = foldr (+) 0 [x | x <- [1..(n-1)], x `mod` 3 == 0 || x `mod` 5 == 0]
 
 expandir xs = [x | x <- xs, i <- [1..x], i<=x]
 
+
+-- NO PIENSO HACER NI EL 3 NI EL 4 MALISIMOS
+
+
 -- 5)
 -- Definir las siguientes funciones usando foldr:
 
