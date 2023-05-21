@@ -102,29 +102,46 @@ expandir xs = [x | x <- xs, i <- [1..x], i<=x]
 --a) map :: (a → b) → [a ] → [b ] que dada una funci´on y una lista, aplica la funci´on a cada
 --elemento de la lista.
 
--- mapas F xs =
+mapa :: (a -> b) -> [a] -> [b]
+mapa f xs = foldr (\x acu -> f x : acu) [] xs
 
 --b) filter :: (a → Bool) → [a ] → [a ] , que dado un predicado y una lista xs, devuelve una lista
 --con los elementos de xs que satisfacen el predicado.
 
--- filtros F xs =
+filtere :: (a->Bool) -> [a] -> [a]
+filtere f xs = foldr (\x acu -> if f x then x : acu else acu) [] xs
 
 --c) unzip ::[(a, b)] → ([a ], [b ]), que dada una lista de tuplas xs retorna una tupla de listas donde
 --cada una corresponde a los primeros y secundos elementos de los pares respectivamente.
 --Ej. unzip [(’a’, 1),(’z’, 7),(’h’, 9)] = ("azh", [1, 7, 9])
 
---unzip [] = []
--- unzip
+unzipi :: [(a,b)] -> ([a],[b])
+unzipi xs = (xl,xr) where 
+        xl = foldr (\(x,y) acu -> x:acu) [] xs
+        xr = foldr (\(x,y) acu -> y:acu) [] xs
 
 --d) pair2List ::(a, [b ]) → [(a, b)] que dado un par formado por un valor x y una lista xs convierta
 --a la lista xs en una lista de pares, formada con los elementos de xs y x .
 --Ej. pair2List (x , [y1 , y2 , y3 ]) = [(x , y1 ),(x , y2 ),(x , y3 )]
 
+pair2Listi :: (a,[b]) -> [(a,b)] 
+pair2Listi (a,xs) = foldr (\x acu -> (a,x):acu) [] xs
+
 --e) maxSec :: [(Int, Int)] → (Int, Int), que dada una lista de pares de naturales que represente a
 --una lista de segmentos de la recta, calcule el segmento m´as largo de la misma.
 --Ej.maxSec [(1, 2),(0, 7),(4, 6)] = (0, 7)
 
---Puede definir una funci´on auxiliar maxL :: (Int, Int) → (Int, Int) → (Int, Int), que dados dos
---pares de naturales que representan a dos segmentos de la recta, devuelva el segmento cuya
---longitud sea m´axima.
---Ej.maxL (1, 2) (0, 7) = (0, 7).
+-- Aca la hago con una auxiliar que me invente yo
+longseg :: (Int,Int) -> Int
+longseg (x,y) = y-x
+
+maxSece :: [(Int,Int)] -> (Int,Int)
+maxSece xs = foldr (\x acu -> if longseg x > longseg acu then x else acu) (0,0) xs
+
+-- Ahora con la ayuda que da rabasedas (literalmente te dice que armes maxL)
+maxLe :: (Int, Int) -> (Int, Int) -> (Int, Int)
+maxLe (x,y) (a,b)       | y-x > b-a = (x,y)
+                        | otherwise = (a,b)
+
+maxSece2 :: [(Int,Int)] -> (Int,Int)                        
+maxSece2 xs = foldr (\x acu -> maxLe x acu) (0,0) xs 
