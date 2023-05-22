@@ -18,7 +18,11 @@ as = b + c where
             b = 1 
             c = 2
 
-
+-- Notar tambien el uso de let/in
+sumar :: Int -> Int
+sumar x = let a = 1
+              b = 2
+          in x + a + b
 
 -- TIPOS DE DATOS (empiezan con mayuscula)
 -- Bool - Char - Int - Integer (precisión arbitraria) - Float - [x] (x List) - (x,y)
