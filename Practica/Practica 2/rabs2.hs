@@ -112,7 +112,6 @@ member' e c (Nodo l x r)
 -- d + 1
 
 --8)
-data BST a = E | N (BST a) a (BST a) deriving Show
 
 data Color = R | B deriving Show 
 data RBT a = Eb | Nb Color (RBT a) a (RBT a) deriving Show
