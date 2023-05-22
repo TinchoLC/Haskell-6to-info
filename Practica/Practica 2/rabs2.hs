@@ -2,7 +2,10 @@
 
 --1)
 
---xd
+type RGB = (Int,Int,Int)
+
+mezclar :: RGB -> RGB -> RGB
+mezclar (x,y,z) (a,b,c) = (div (x+a) 2,div (y+b) 2,div (z+c) 2)
 
 --2)
 
@@ -42,6 +45,65 @@ borrar (xs,n) = (bor n xs, n-1)
 bor :: Int -> [Char] -> [Char]
 bor 1 (x:xs) = xs
 bor n (x:xs) = x:(bor (n-1) xs)
+
+--3)
+data Clist a = EmptyCL | CUnit a | Consnoc a (Clist a) a deriving Show
+
+--funciones de acceso:
+headCL (CUnit x) = x
+headCL (Consnoc x xs y) = x
+
+tailCL (CUnit x) = EmptyCL
+tailCL (Consnoc x xs y) = Consnoc (headCL xs) (tailCL xs) y
+
+isEmptyCL EmptyCL = True
+isEmptyCL _ = False
+
+isCUnit (CUnit _) = True
+isCUnit _ = False
+
+--b)
+reverseCL EmptyCL = EmptyCL
+reverseCL (CUnit x) = CUnit x
+reverseCL (Consnoc x xs y) = Consnoc y (reverseCL xs) x
+
+--c) Definir una funcion inits que toma una CList y devuelve una CList con todos los posibles
+-- inicios de la CList
+-- xd
+
+--d) Definir una funci´on lasts que toma una CList y devuelve una CList con todas las posibles
+-- terminaciones de la CList.
+-- xd
+
+--e) Definir una funci´on concatCL que toma una CList de CList y devuelve la CList con todas ellas
+-- concatenadas
+-- ultimovalor :: [a] -> a
+-- ultimovalor [a] = a 
+-- ultimovalor (x:xs) = ultimovalor xs
+
+-- listACList :: [a] -> Clist a
+-- listACList [] = EmptyCL
+-- listACList [a] = CUnit a
+-- listACList (x:xs) = (x (take (length(xs)-1) xs) ultimovalor xs)
+
+-- Clist
+
+-- concatCL1 :: Clist (Clist a) -> [a]
+-- concatCL = 
+
+
+-- concatCL :: Clist (Clist a) -> Clist a
+--concatCL xsss = listACList (concatCL1 xsss)
+
+-- ME RINDO ME DUELE LA PANSAAAA
+
+--4) 
+data Aexp = Num Int | Prod Aexp Aexp | Div Aexp Aexp deriving Show
+
+--a) Defina un evaluador eval :: Aexp → Int. ¿C´omo maneja los errores de divisi´on por 0?
+
+--b) Defina un evaluador seval :: Aexp → Maybe Int.
+-- ME RINDO ME SIGUE DOLIENDO LA PANSA
 
 --5) Definir las siguientes funciones sobre arboles binarios de busqueda (bst):
 --a) maximum :: BST a → a, que calcula el maximo valor en un bst.
@@ -113,11 +175,11 @@ member' e c (Nodo l x r)
 
 --8)
 
-data Color = R | B deriving Show 
-data RBT a = Eb | Nb Color (RBT a) a (RBT a) deriving Show
+data Colore = R | B deriving Show 
+data RBT a = Eb | Nb Colore (RBT a) a (RBT a) deriving Show
 
 fromOrdList :: [x] -> BST x
-fromOrdList [] = E
+fromOrdList [] = Hoja
 fromOrdList xs = 
     let     n = length xs
             m = div n 2
@@ -125,7 +187,7 @@ fromOrdList xs =
             ls = take m xs
             rs = drop (m+1) xs
             (t1,t2) = (fromOrdList ls, fromOrdList rs)
-            in (N t1 x t2)
+            in (Nodo t1 x t2)
 
 -- para hacer esto con RBT tengo que aplicar el logaritmo entero / pares tienen raiz roja (que luego se pinta) / impares raiz negra
 -- recordar se puede tener 2 negros seguidos pero no dos rojos seguidos 
