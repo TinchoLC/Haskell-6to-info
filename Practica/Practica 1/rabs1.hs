@@ -48,7 +48,9 @@ upto n m
         | n <= m = [n] ++ (upto (n+1) m)
         | otherwise = []
 
---h) xd
+--h)
+ecoo :: [Char] -> [Char]
+ecoo xs = foldr (\(x,i) acc -> replicate i x ++ acc) [] (zip xs [1..])
 
 -- 2)
 --
