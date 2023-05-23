@@ -1,6 +1,7 @@
 -- Listas por comprension
 
 -- [valores | generador, guardas]
+Ej. [x | x <- [1..10], (x `div` 2) == 0]
 
 -- La funcion zip, mapea dos listas a una lista con los pares de elementos correspondientes
 pruebazip = zip [1..5] ['a','b','c'] -- se trucan en 3, porque es en el menor
