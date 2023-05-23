@@ -3,9 +3,9 @@ data RBT a = E | T Color (RBT a) a (RBT a) deriving Show
 -- E significa Empty, T significa tree
 colcha = T B ( T R ( T B E 1 E) 2 ( T B E 3 E) ) 5 ( T R ( T B E 6 E ) 7 ( T B E 8 E ))
 -- Ejemplo de     
---       5
---   2       7
--- 1   3   6   8
+--B       5
+--R   2       7
+--B 1   3   6   8
 
 -- Invariantes: 
 -- 1) Todos los nodos rojos tienen un padre negro. (Invariante Local)
