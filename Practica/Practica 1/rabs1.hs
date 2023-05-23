@@ -82,7 +82,7 @@ abundantes2 = [x | x <- [1..], x < (foldr (+) 0 [y | y <- [1..x-1], (x) `mod` y 
 --veces como indica su posici´on. No usar listas por comprensi´on. Por ejemplo:
 -- eco "hola" ="hoolllaaaa"
 
-eco xs = [x | (x,y) <- zip xs [0..], i <- [0..y], i<=y]
+eco xs = [x | (x,y) <- zip xs [0..], i <- [0..y]]
 
 --e)
 --euler :: Int → Int tal que euler n es la suma de todos los m´ultiplos de 3 ´o 5 menores que n.
@@ -96,7 +96,7 @@ euler n = foldr (+) 0 [x | x <- [1..(n-1)], x `mod` 3 == 0 || x `mod` 5 == 0]
 -- n copias de sı mismo:
 -- Ejemplo: expandir [3, 4, 2] = [3, 3, 3, 4, 4, 4, 4, 2, 2]
 
-expandir xs = [x | x <- xs, i <- [1..x], i<=x]
+expandir xs = [x | x <- xs, i <- [1..x]]
 
 
 -- NO PIENSO HACER NI EL 3 NI EL 4 MALISIMOS
