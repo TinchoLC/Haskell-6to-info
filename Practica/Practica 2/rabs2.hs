@@ -97,13 +97,19 @@ reverseCL (Consnoc x xs y) = Consnoc y (reverseCL xs) x
 
 -- ME RINDO ME DUELE LA PANSAAAA
 
---4) 
-data Aexp = Num Int | Prod Aexp Aexp | Div Aexp Aexp deriving Show
+--4) Dado el siguiente tipo algebraico:
+data Aexp = Num Int | Prod Aexp Aexp | Div Aexp Aexp  deriving Show
+--a) Defina un evaluador eval :: Aexp → Int. ¿Como maneja los errores de division por 0? 
 
---a) Defina un evaluador eval :: Aexp → Int. ¿C´omo maneja los errores de divisi´on por 0?
+eval :: Aexp -> Int
+eval (Num x) = x
+eval (Prod x y) = eval x * eval y
+eval (Div x y)
+    | eval y == eval (Num 0) = error "Math error: division por cero"
+    | otherwise = eval x `div` eval y
 
 --b) Defina un evaluador seval :: Aexp → Maybe Int.
--- ME RINDO ME SIGUE DOLIENDO LA PANSA
+-- ME RINDO ME SIGUE DOLIENDO LA PANzA
 
 --5) Definir las siguientes funciones sobre arboles binarios de busqueda (bst):
 --a) maximum :: BST a → a, que calcula el maximo valor en un bst.
