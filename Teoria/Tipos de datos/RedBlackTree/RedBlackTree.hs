@@ -7,6 +7,10 @@ colcha = T B ( T R ( T B E 1 E) 2 ( T B E 3 E) ) 5 ( T R ( T B E 6 E ) 7 ( T B E
 --R   2       7
 --B 1   3   6   8
 
+colcho = T B ( T R E 2 E ) 5 ( T R E 7 E)
+--B       5
+--R   2       7
+
 -- Invariantes: 
 -- 1) Todos los nodos rojos tienen un padre negro. (Invariante Local)
 -- 2) Todos los caminos de la raız a una hoja tienen el mismo numero de
