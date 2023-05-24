@@ -54,9 +54,12 @@ selecA [] arb = arb
 selecA (x:xs) (Nk lef rig)   | x == L = selecA xs lef 
                             | otherwise = selecA xs rig
 
--- c) Definir una funci´on enum :: Arb → [[Cmd]] que devuelva todas las secuencias de comandos
--- v´alidas para ir desde la ra´ız hasta una hoja.
--- no gracias
+--c) Definir una funcion enum :: Arb → [[Cmd]] que devuelva todas las
+-- secuencias de comandos validas para ir desde la raız hasta una hoja.
+enum :: Arb -> [[Cmd]]
+enum Ek = [[]]
+enum (H x) = [[]]
+enum (Nk l r) = map (L:) (enum l) ++ map (R:) (enum r) s
 
 -- 3)
 -- Un lenguaje imperativo simple solo permites variables de un unico tipo, para esto se mantiene
