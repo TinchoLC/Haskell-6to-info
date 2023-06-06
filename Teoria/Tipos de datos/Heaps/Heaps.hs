@@ -63,3 +63,5 @@ findMin (N _ x a b) = x
 
 deleteMin :: Ord a => Heap a -> Heap a -- borras la raiz y mergeas.
 deleteMin (N _ x a b) = merge a b 
+
+check :: Ord a => Heap a -> Bool
