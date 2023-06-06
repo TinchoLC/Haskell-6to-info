@@ -80,8 +80,8 @@ enum (Nk l r) = map (L:) (enum l) ++ map (R:) (enum r) s
 
 -- 4) funciones pa
 data BST a = E | N (BST a) a (BST a) deriving Show
-arbolejemplo = N (N (N E 8 E) 3 E) 4 (N (N E 5 E) 6 (N E 7 E))
-arbolejemplo2 = N (N (N E 8 E) 3 E) 4 (N (N E 5 E) 6 (N E 7 (N (N E 9 E) 10 E)))
+arbolejemplo = N (N (N E 2 E) 3 E) 4 (N (N E 5 E) 6 (N E 7 E))
+arbolejemplo2 = N (N (N E 2 E) 3 E) 4 (N (N E 5 E) 6 (N E 7 (N (N E 9 E) 10 E)))
 
 -- a) calcule el n´umero de nodos en un nivel espec´ıfico de un ´arbol binario
 numnodbin :: Int -> BST a -> Int 
@@ -91,13 +91,12 @@ numnodbin x (N lef _ rig) = numnodbin (x-1) lef + numnodbin (x-1) rig
 
 -- b) reciba un arbol binario de busqueda y verifique si es un arbol balanceado, es decir, que la
 -- diferencia de alturas entre su subarbol izquierdo y derecho no sea mayor que 1 para todos los nodos
-
-altarb :: BST a -> Int 
+altarb :: BST a -> Int -- este te saca la altura de un arbol
 altarb E = 0
 altarb (N izq x der)    | altarb izq >= altarb der = 1 + (altarb izq)
                         | otherwise = 1 + (altarb der) 
 
-valabs :: Int -> Int
+valabs :: Int -> Int -- seguro existe una funcion asi pero yo la creo porquesi
 valabs n | n>0 = n
          | otherwise = (-n)
 
@@ -106,10 +105,24 @@ arbbalanc E = True
 arbbalanc (N izq x der) | valabs (altarb izq - altarb der) < 2 = True && (arbbalanc izq) && (arbbalanc der) 
                         | otherwise = False 
 
-
 -- c) encuentren el sucesor y el predecesor de un valor dado en un ´arbol binario de b´usqueda. El
 -- sucesor es el valor m´as peque˜no mayor que el valor dado, y el predecesor es el valor m´as
 -- grande menor que el valor dado
+sucarb :: Ord a => a -> BST a -> Maybe a
+sucarb _ E = Nothing
+sucarb y (N lef x rig)
+    | y < x = case (sucarb y lef) of
+                  Just xx -> Just xx
+                  Nothing -> Just x
+    | otherwise = sucarb y rig
+
+predarb :: Ord a => a -> BST a -> Maybe a
+predarb _ E = Nothing
+predarb y (N lef x rig)
+    | y > x = case (predarb y rig) of
+                  Just xx -> Just xx
+                  Nothing -> Just x
+    | otherwise = predarb y lef
 
 -- d) dado un Leftist Heaps, retorne una lista con sus elementos ordenados de mayor a menor
 
