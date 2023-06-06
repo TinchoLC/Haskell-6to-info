@@ -65,3 +65,6 @@ deleteMin :: Ord a => Heap a -> Heap a -- borras la raiz y mergeas.
 deleteMin (N _ x a b) = merge a b 
 
 check :: Ord a => Heap a -> Bool
+check E = True
+check (N k x E E) = k == 1
+check (N k x l E me lo pasa lagos
