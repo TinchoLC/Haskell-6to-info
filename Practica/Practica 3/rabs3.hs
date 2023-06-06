@@ -81,6 +81,8 @@ enum (Nk l r) = map (L:) (enum l) ++ map (R:) (enum r) s
 -- 4) funciones pa
 data BST a = E | N (BST a) a (BST a) deriving Show
 arbolejemplo = N (N (N E 8 E) 3 E) 4 (N (N E 5 E) 6 (N E 7 E))
+arbolejemplo2 = N (N (N E 8 E) 3 E) 4 (N (N E 5 E) 6 (N E 7 (N (N E 9 E) 10 E)))
+
 -- a) calcule el n´umero de nodos en un nivel espec´ıfico de un ´arbol binario
 numnodbin :: Int -> BST a -> Int 
 numnodbin _ E = 0
@@ -89,7 +91,20 @@ numnodbin x (N lef _ rig) = numnodbin (x-1) lef + numnodbin (x-1) rig
 
 -- b) reciba un arbol binario de busqueda y verifique si es un arbol balanceado, es decir, que la
 -- diferencia de alturas entre su subarbol izquierdo y derecho no sea mayor que 1 para todos los nodos
--- numnodbin :: BST a -> BST a -- xd
+
+altarb :: BST a -> Int 
+altarb E = 0
+altarb (N izq x der)    | altarb izq >= altarb der = 1 + (altarb izq)
+                        | otherwise = 1 + (altarb der) 
+
+valabs :: Int -> Int
+valabs n | n>0 = n
+         | otherwise = (-n)
+
+arbbalanc :: BST a -> Bool 
+arbbalanc E = True
+arbbalanc (N izq x der) | valabs (altarb izq - altarb der) < 2 = True && (arbbalanc izq) && (arbbalanc der) 
+                        | otherwise = False 
 
 
 -- c) encuentren el sucesor y el predecesor de un valor dado en un ´arbol binario de b´usqueda. El
