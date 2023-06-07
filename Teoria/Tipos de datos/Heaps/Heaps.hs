@@ -71,11 +71,11 @@ minL (N _ x l r) = min x (min (minL l) (minL r))
 checkLH :: Ord a => Heap a -> Bool
 checkLH E = True
 checkLH (N k x E E) = k == 1
-checkLH t@(N k x l E) = let m = minl t 
+checkLH t@(N k x l E) = let m = minL t 
                         in x == m && checkLH l
-checkLH t@(N k x E r) = let m = minl t 
+checkLH t@(N k x E r) = let m = minL t 
                         in x == m && checkLH r
-checkLH t@(N k x l r) = let m = minl t 
+checkLH t@(N k x l r) = let m = minL t 
                             lk = rank l
                             rk = rank r
                         in x == m && lk >= rk && checkLH l && checkLH r
