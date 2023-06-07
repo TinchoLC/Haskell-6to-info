@@ -72,10 +72,10 @@ checkLH :: Ord a => Heap a -> Bool
 checkLH E = True
 checkLH (N k x E E) = k == 1
 checkLH t@(N k x l E) = let m = minl t 
-                      in x == m && checkLH l
+                        in x == m && checkLH l
 checkLH t@(N k x E r) = let m = minl t 
-                      in x == m && checkLH r
+                        in x == m && checkLH r
 checkLH t@(N k x l r) = let m = minl t 
-                          lk = rank l
-                          rk = rank r
-                      in x == m && lk >= rk && checkLH l && checkLH r
+                            lk = rank l
+                            rk = rank r
+                        in x == m && lk >= rk && checkLH l && checkLH r
