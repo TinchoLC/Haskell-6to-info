@@ -64,7 +64,18 @@ findMin (N _ x a b) = x
 deleteMin :: Ord a => Heap a -> Heap a -- borras la raiz y mergeas.
 deleteMin (N _ x a b) = merge a b 
 
-check :: Ord a => Heap a -> Bool
-check E = True
-check (N k x E E) = k == 1
-check (N k x l E me lo pasa lagos
+-- Ahora voy a checkear
+minL (N _ x E E) = x
+minL (N _ x l r) = min x (min (minL l) (minL r))
+
+checkLH :: Ord a => Heap a -> Bool
+checkLH E = True
+checkLH (N k x E E) = k == 1
+checkLH t@(N k x l E) = Let m = minl t 
+                      in x == m && checkLH l
+checkLH t@(N k x E r) = Let m = minl t 
+                      in x == m && checkLH r
+checkLH t@(N k x l r) = Let m = minl t 
+                          lk = rank l
+                          rk = rank r
+                      in x == m && lk >= rk && checkLH l && checkLH r
