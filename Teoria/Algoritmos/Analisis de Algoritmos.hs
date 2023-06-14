@@ -29,3 +29,5 @@
 -- Utilizaremos uno que se basa en 2 metricas
 -- WORK: numero total de operaciones realizadas. COSTO SECUENCIAL .. W (e)
 -- SPAN: cadena mas larga de dependencias del computo. COSTO PARALELO .. S (e)
+
+-- EJEMPLO CON msort (merge sort)
