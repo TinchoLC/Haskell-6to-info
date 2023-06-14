@@ -36,6 +36,10 @@ msort [x] = [x]
 msort xs = let (ls,rs) = split xs
                (ls',rs') = (msort ls||msort rs) // || no existe nose
            in merge (ls',rs')
+           
+-- Wmsort(0) = k0 // ingreso 0 porque tiene long0
+-- Wmsort(1) = k1 // ingreso 1 porque tiene long1
+-- Wmsort(n) = Wsplit(n) + 2 Wmsort(n/2) + Wmerge(n) + k2 si n > 1 // Ingreso n porque tiene longn
 
 split [] = ([],[])
 split [x] = ([x],[])
