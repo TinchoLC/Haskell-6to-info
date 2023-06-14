@@ -31,3 +31,8 @@
 -- SPAN: cadena mas larga de dependencias del computo. COSTO PARALELO .. S (e)
 
 -- EJEMPLO CON msort (merge sort)
+msort [] = []
+msort [x] = [x]
+msort xs = let (ls, rs) = split xs
+               (ls', rs') = (msort ls||msort rs)
+           in merge (ls', rs')
