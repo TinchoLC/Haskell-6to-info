@@ -33,6 +33,17 @@
 -- EJEMPLO CON msort (merge sort)
 msort [] = []
 msort [x] = [x]
-msort xs = let (ls, rs) = split xs
-               (ls', rs') = (msort ls||msort rs)
-           in merge (ls', rs')
+msort xs = let (ls,rs) = split xs
+               (ls',rs') = (msort ls||msort rs) // || no existe nose
+           in merge (ls',rs')
+
+split [] = ([],[])
+split [x] = ([x],[])
+split (x:y:zs) = let (xs,ys) = split zs
+                 in ((x:xs),(y:ys))
+                
+merge ([],ys) = ys
+merge (xs,[]) = xs
+merge (x:xs,y:ys) = if x <= y 
+                    then (x:merge (xs,(y:ys)))
+                    else (y:merge ((x:xs),ys))
