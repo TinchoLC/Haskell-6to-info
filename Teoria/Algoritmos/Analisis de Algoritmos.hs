@@ -12,9 +12,16 @@
 -- Necesitamos analizarlos instancias grandes de su entrada para evidenciarlo.
 -- Analisis Asintotico de su eficiencia.
 -- Obtenemos una ecuacion en terminos de la entrada.
+-----------------------------------------------------------------------
+-- Tipos de funciones y definición:
+-- Sean f, g : N → R. Decimos que f tiene orden de crecimiento (O,Ω,Θ)(g) (y escribimos f ∈ (O,Ω,Θ)(g)), 
+-- si existen constantes c ∈ R+, n0 ∈ N
 
--- aca faltan los tipos de funciones, O, Omega, 0
+-- Para O: ∀ n >= n0      ;     0 <= f(n) <= c * g(n)
+-- Para Ω: ∀ n >= n0      ;     0 <= c * g(n) <= f(n)
+-- Para Θ: ∀ n >= n0      ;     0 <= c1 g(n) <= f(n) <= c2 * g(n)
 
+-----------------------------------------------------------------------
 -- MODELO DE COSTO
 -- Basados en Maquinas: considera el costo de las instrucciones ejecutadas por el algoritmo en la maquina subyacente.
 -- son mas precisos, pero su analisis es complejo y poco expresivo.
