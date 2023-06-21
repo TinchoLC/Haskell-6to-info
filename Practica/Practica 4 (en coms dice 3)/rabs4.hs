@@ -32,6 +32,7 @@ Practica 3 (segun titulo en comunidades)
 -- Recordamos la definicion, se puede decir que f ∈ a O(g) siempre y cuando 0 <= f(n) <= c * g(n)
 -- Aplicamos: 0 <= n! <= c * (n+1)!
 -- Trabajamos como inecuacion: n! <= c * (n+1)!    =>   n! <= c * n! * (n+1)   =>  1 <= c * (n+1)
+-- 1 <= c (n+1) =>      1 <= cn + c      =>       1-c <= cn      =>      (1-c)/c <= n
 -- Se cumple para c >= 0.5
 
 -- Para (n! ∈ Ω((n + 1)!)):
