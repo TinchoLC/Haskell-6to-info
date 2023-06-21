@@ -20,6 +20,7 @@
 -- Para O: ∀ n >= n0      ;     0 <= f(n) <= c * g(n)
 -- Para Ω: ∀ n >= n0      ;     0 <= c * g(n) <= f(n)
 -- Para Θ: ∀ n >= n0      ;     0 <= c1 g(n) <= f(n) <= c2 * g(n)
+-- La existencia de Θ, depende de la existencia de O y Ω, ya que es la "combinación" de estos, funciona como un AND.
 -----------------------------------------------------------------------
 -- MODELO DE COSTO
 -- Basados en Maquinas: considera el costo de las instrucciones ejecutadas por el algoritmo en la maquina subyacente.
