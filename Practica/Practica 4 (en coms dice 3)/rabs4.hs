@@ -1,6 +1,6 @@
 Practica 3 (segun titulo en comunidades)
 
-
+------------------------------------------------------------------------------------------------------
 -- 3) ¿Cuales de los siguientes enunciados son verdaderos? Probar las respuestas.
 -- 1. n^2 ∈ O(n^3)
 -- Recordamos la definicion, se puede decir que f ∈ a O(g) siempre y cuando 0 <= f(n) <= c * g(n)
@@ -43,3 +43,10 @@ Practica 3 (segun titulo en comunidades)
 -- superara al 1 independientemente de c (que es R+), por ende, el enunciado es Falso.
 
 -- Como con Ω(g) no se cumple, con Θ(g) tampoco se va a cumplir, por ende, el enunciado es falso.
+------------------------------------------------------------------------------------------------------
+-- 5) Sean f, g : N → R asintoticamente no negativas y h(n) = f(n) + g(n), demostrar que h(n) ∈ Θ(max(f(n), g(n)))
+-- RECORDAR teoria: Se dice que f: N -> R es asintoticamente no negativa tal que si existe un nn ∈ N / para todo n >= nn, 0 <= f(n)
+
+--   NO LO HICE JUSTO SE FUE EL INTERNET
+
+
